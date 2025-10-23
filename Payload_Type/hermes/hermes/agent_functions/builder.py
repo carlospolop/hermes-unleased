@@ -10,14 +10,15 @@ import shutil
 import traceback
 import glob
 import time
+import pathlib
 
 class Hermes(PayloadType):
-    name = "hermes"  
+    name = "hermes-unleased"  
     file_extension = "" 
     author = "@slyd0g" 
     supported_os = [SupportedOS.MacOS]  
     wrapped_payloads = [] 
-    note = """A Swift 5 implant targeting macOS 12+ (Monterey and beyond)"""
+    note = """A Swift 5 implant targeting macOS 12+ (Monterey and beyond) - Unleased version"""
     supports_dynamic_loading = False
     build_parameters = [
         BuildParameter(
@@ -30,9 +31,9 @@ class Hermes(PayloadType):
     build_steps = [
         # BuildStep(step_name="Create temporary build folder", step_description="Create temporary build folder"),
         # BuildStep(step_name="Copy source code", step_description="Copy source code to temporary build folder"),
-        BuildStep(step_name="Configure Hermes", step_description="Update Hermes config with parameters from Mythic"),
+        BuildStep(step_name="Configure Hermes-Unleased", step_description="Update Hermes-Unleased config with parameters from Mythic"),
         BuildStep(step_name="Darling Check", step_description="Verify Darling environment is prepared"),
-        BuildStep(step_name="Compile", step_description="Compile Hemes executable"),
+        BuildStep(step_name="Compile", step_description="Compile Hermes-Unleased executable"),
         BuildStep(step_name="Lipo Universal", step_description="Combine x86_64 and arm64 builds into a universal binary"),
         # BuildStep(step_name="Cleanup", step_description="Delete temporary build folder"),
     ]
@@ -56,8 +57,8 @@ class Hermes(PayloadType):
 
     async def buildConfig(self):
         # Copy backup config to config.swift
-        agent_config_bak_path = "/Mythic/hermes/agent_code/Hermes/config.swift.bak"
-        agent_config_path = "/Mythic/hermes/agent_code/Hermes/config.swift"
+        agent_config_bak_path = "/Mythic/hermes-unleased/agent_code/Hermes/config.swift.bak"
+        agent_config_path = "/Mythic/hermes-unleased/agent_code/Hermes/config.swift"
         shutil.copyfile(agent_config_bak_path, agent_config_path)
 
         # pull user agent, host header, and custom headers from c2info
@@ -116,14 +117,14 @@ class Hermes(PayloadType):
             if key in data:
                 await SendMythicRPCPayloadUpdatebuildStep(MythicRPCPayloadUpdateBuildStepMessage(
                     PayloadUUID=self.uuid,
-                    StepName="Configure Hermes",
+                    StepName="Configure Hermes-Unleased",
                     StepStdout="Detected {} in config file, erroring out".format(key),
                     StepSuccess=False
                 )) 
         await SendMythicRPCPayloadUpdatebuildStep(MythicRPCPayloadUpdateBuildStepMessage(
             PayloadUUID=self.uuid,
-            StepName="Configure Hermes",
-            StepStdout="Hermes configuration populated successfully",
+            StepName="Configure Hermes-Unleased",
+            StepStdout="Hermes-Unleased configuration populated successfully",
             StepSuccess=True
         )) 
 
@@ -141,15 +142,15 @@ class Hermes(PayloadType):
         clt_path = "/Library/Developer/CommandLineTools"
         swiftc_path = "/usr/bin/swiftc"
         lipo_path = "/usr/bin/lipo"
-        hermes_path = "/Mythic/hermes/agent_code/Hermes/"
+        hermes_path = "/Mythic/hermes-unleased/agent_code/Hermes/"
         target_architecture = self.get_parameter("architecture")
-        bin_path = "/Mythic/hermes/agent_code/Hermes/hermes_{arch}".format(arch=target_architecture)
+        bin_path = "/Mythic/hermes-unleased/agent_code/Hermes/hermes_{arch}".format(arch=target_architecture)
         profile = self.c2info[0].get_c2profile()["name"]
 
         resp = BuildResponse(status=BuildStatus.Error)
 
         # delete old payloads, replace this with temp build folders later
-        for payload in glob.glob('/Mythic/hermes/agent_code/Hermes/hermes_*'):
+        for payload in glob.glob('/Mythic/hermes-unleased/agent_code/Hermes/hermes_*'):
             os.remove(payload)
 
         try:
@@ -198,7 +199,7 @@ class Hermes(PayloadType):
                     await SendMythicRPCPayloadUpdatebuildStep(MythicRPCPayloadUpdateBuildStepMessage(
                         PayloadUUID=self.uuid,
                         StepName="Compile",
-                        StepStdout="Compiled Hermes successfully",
+                        StepStdout="Compiled Hermes-Unleased successfully",
                         StepSuccess=True
                     )) 
                 else:
@@ -224,7 +225,7 @@ class Hermes(PayloadType):
                     resp.payload = open(bin_path, "rb").read()
 
                 # Successfully created the payload without error
-                resp.build_message += f'\nCreated Hermes payload!\n' \
+                resp.build_message += f'\nCreated Hermes-Unleased payload!\n' \
                                     f'Arch: {target_architecture}, ' \
                                     f'C2 Profile: {profile}\n'
                 resp.status = BuildStatus.Success
@@ -249,7 +250,7 @@ class Hermes(PayloadType):
                     await SendMythicRPCPayloadUpdatebuildStep(MythicRPCPayloadUpdateBuildStepMessage(
                         PayloadUUID=self.uuid,
                         StepName="Compile",
-                        StepStdout="Compiled Hermes successfully",
+                        StepStdout="Compiled Hermes-Unleased successfully",
                         StepSuccess=True
                     )) 
                 else:
@@ -283,12 +284,12 @@ class Hermes(PayloadType):
                     return resp
 
                 # get built file
-                bin_path = "/Mythic/hermes/agent_code/Hermes/hermes_universal"
+                bin_path = "/Mythic/hermes-unleased/agent_code/Hermes/hermes_universal"
                 if os.path.exists(bin_path):
                     resp.payload = open(bin_path, "rb").read()
 
                 # Successfully created the payload without error
-                resp.build_message += f'\nCreated Hermes payload!\n' \
+                resp.build_message += f'\nCreated Hermes-Unleased payload!\n' \
                                     f'Arch: {target_architecture}, ' \
                                     f'C2 Profile: {profile}\n'
                 resp.status = BuildStatus.Success

