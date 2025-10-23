@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  cp.swift
 //  Hermes
@@ -46,3 +48,4 @@ func cp(job: Job) {
         job.status = "error"
     }
 }
+*/

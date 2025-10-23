@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  jobkill.swift
 //  Hermes
@@ -21,3 +23,4 @@ func jobKill(job: Job, jobList: JobList) {
     job.completed = true
     job.success = true
 }
+*/

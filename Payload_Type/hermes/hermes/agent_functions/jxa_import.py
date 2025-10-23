@@ -1,3 +1,5 @@
+# DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+"""
 from mythic_container.MythicCommandBase import *
 from mythic_container.MythicRPC import *
 import json
@@ -60,4 +62,4 @@ class JXAImportCommand(CommandBase):
         return task
 
     async def process_response(self, response: AgentResponse):
-        pass
+        pass"""

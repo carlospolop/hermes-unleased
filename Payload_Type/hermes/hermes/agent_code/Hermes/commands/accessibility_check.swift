@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  accessibility_check.swift
 //  Hermes
@@ -21,3 +23,4 @@ func accessibilityCheck(job: Job) {
         job.status = "error"
     }
 }
+*/

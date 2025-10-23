@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  jobs.swift
 //  Hermes
@@ -18,3 +20,4 @@ func listJobs(job: Job, jobList: JobList) {
     job.completed = true
     job.success = true
 }
+*/

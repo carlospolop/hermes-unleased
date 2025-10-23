@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  download.swift
 //  Hermes
@@ -139,3 +141,4 @@ func downloadChunk(job: Job) {
         job.status = "success"
     }
 }
+*/

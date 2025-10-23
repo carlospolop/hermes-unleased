@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  cat.swift
 //  Hermes
@@ -34,3 +36,4 @@ func cat(job: Job) {
         job.status = "error"
     }
 }
+*/

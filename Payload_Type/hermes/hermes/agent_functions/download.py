@@ -1,3 +1,5 @@
+# DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+"""
 from mythic_container.MythicCommandBase import *
 import json
 from mythic_container.MythicRPC import *
@@ -42,3 +44,4 @@ class DownloadCommand(CommandBase):
 
     async def process_response(self, response: AgentResponse):
         pass
+"""

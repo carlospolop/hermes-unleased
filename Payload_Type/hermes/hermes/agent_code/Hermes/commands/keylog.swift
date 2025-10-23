@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  keylog.swift
 //  Hermes
@@ -244,3 +246,4 @@ class SwiftSpy {
         print("RUNLOOP_STARTED")
     }
 }
+*/

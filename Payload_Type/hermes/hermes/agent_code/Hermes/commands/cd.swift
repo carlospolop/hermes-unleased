@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  cd.swift
 //  Hermes
@@ -49,3 +51,4 @@ func cd(job: Job) {
         job.status = "error"
     }
 }
+*/

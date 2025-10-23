@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  env.swift
 //  Hermes
@@ -17,3 +19,4 @@ func getEnvironmentVariables(job: Job) {
     job.success = true
     
 }
+*/

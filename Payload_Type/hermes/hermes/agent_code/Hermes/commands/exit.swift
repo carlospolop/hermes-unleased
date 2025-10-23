@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  exit.swift
 //  Hermes
@@ -26,3 +28,4 @@ func exit(job: Job) {
     job.completed = true
     job.success = true
 }
+*/

@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  clipboard.swift
 //  Hermes
@@ -35,3 +37,4 @@ func clipboard(job: Job) {
         }
     }
 }
+*/

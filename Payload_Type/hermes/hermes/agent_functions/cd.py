@@ -1,3 +1,5 @@
+# DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+"""
 from mythic_container.MythicCommandBase import *
 import json
 
@@ -25,3 +27,4 @@ class CdCommand(CommandBase):
 
     async def process_response(self, response: AgentResponse):
         pass
+"""

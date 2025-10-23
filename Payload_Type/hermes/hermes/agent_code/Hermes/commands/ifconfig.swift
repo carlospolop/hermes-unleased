@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  ifconfig.swift
 //  Hermes
@@ -16,3 +18,4 @@ func ifconfig(job: Job) {
     job.completed = true
     job.success = true
 }
+*/

@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  get_execution_context.swift
 //  Hermes
@@ -38,3 +40,4 @@ func getExecutionContext(job: Job) {
     job.completed = true
     job.success = true
 }
+*/

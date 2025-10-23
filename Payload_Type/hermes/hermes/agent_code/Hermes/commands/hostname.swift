@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  hostname.swift
 //  Hermes
@@ -33,3 +35,4 @@ func hostname(job: Job) {
     job.completed = true
     job.success = true
 }
+*/

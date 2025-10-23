@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  jxa.swift
 //  Hermes
@@ -48,3 +50,4 @@ func jxa(job: Job){
         job.status = "error"
     }
 }
+*/

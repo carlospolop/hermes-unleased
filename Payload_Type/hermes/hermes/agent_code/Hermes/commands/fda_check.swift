@@ -1,3 +1,5 @@
+// DISABLED FOR TESTING - FIRST HALF OF COMMANDS ALPHABETICALLY
+/*
 //
 //  fda_check.swift
 //  Hermes
@@ -62,3 +64,4 @@ func fullDiskAccessCheck(job: Job) {
         job.status = "error"
     }
 }
+*/
